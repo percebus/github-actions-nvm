@@ -9,6 +9,10 @@ runs:
       run: node --version
       continue-on-error: true
 
+    - name: brew uninstall node
+      shell: bash
+      run: brew uninstall node
+
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
