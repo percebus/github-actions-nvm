@@ -9,6 +9,12 @@ runs:
       run: node --version
       continue-on-error: true
 
+    - name: uninstall node
+      shell: bash
+      run: |
+        sudo apt-get purge npm
+        sudo apt-get purge nodejs
+
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
