@@ -12,7 +12,7 @@ runs:
     - name: nvm uninstall
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
-      run: nvm uninstall v20 --no-progress
+      run: nvm uninstall --no-progress node
 
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
