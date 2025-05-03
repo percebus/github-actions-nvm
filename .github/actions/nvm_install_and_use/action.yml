@@ -9,10 +9,15 @@ runs:
       run: node --version
       continue-on-error: true
 
+    # runs nvm use as well
     - name: nvm install
-      shell: bash -l {0}
+      shell: bash
       run: nvm install --no-progress
 
     - name: node --version (after)
       shell: bash
       run: node --version
+
+    - name: npm --version
+      shell: bash
+      run: npm --version
