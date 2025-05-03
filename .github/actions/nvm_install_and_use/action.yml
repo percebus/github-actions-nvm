@@ -11,10 +11,10 @@ runs:
         node --version
       continue-on-error: true
 
-    - name: nvm uninstall
-      # WARNING: nvm is "not found" w/o this
-      shell: bash -l {0}
-      run: nvm uninstall --no-progress node
+    - name: rm node
+      shell: bash
+      run: |
+        rm -rf /usr/local/bin/node
 
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
