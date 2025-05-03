@@ -9,11 +9,15 @@ runs:
       run: node --version
       continue-on-error: true
 
-    # runs nvm use as well
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
       run: nvm install --no-progress
+
+    - name: nvm use
+      # WARNING: nvm is "not found" w/o this
+      shell: bash -l {0}
+      run: nvm use --no-progress
 
     - name: node --version (after)
       shell: bash
