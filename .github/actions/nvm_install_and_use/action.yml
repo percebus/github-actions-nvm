@@ -6,7 +6,9 @@ runs:
   steps:
     - name: node --version (before)
       shell: bash
-      run: node --version
+      run: |
+        which node
+        node --version
       continue-on-error: true
 
     - name: nvm uninstall
@@ -27,7 +29,9 @@ runs:
     # FIXME still using the old version
     - name: node --version (after)
       shell: bash -l {0}
-      run: node --version
+      run: |
+        which node
+        node --version
 
     - name: npm --version
       shell: bash -l {0}
