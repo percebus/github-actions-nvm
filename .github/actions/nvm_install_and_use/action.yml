@@ -15,10 +15,9 @@ runs:
       run: nvm install --no-progress
 
     # nvm install seems to also activate it
-    # - name: nvm use
-    #   # WARNING: nvm is "not found" w/o this
-    #   shell: bash -l {0}
-    #   run: nvm use --no-progress
+    - name: nvm use
+      shell: bash -l {0}
+      run: nvm use --no-progress
 
     - name: node --version (after)
       shell: bash -l {0}
