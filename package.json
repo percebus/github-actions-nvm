@@ -1,0 +1,26 @@
+{
+  "name": "github-actions-nvm",
+  "version": "1.0.0",
+  "description": "github re-usable actions & workflows",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/percebus/github-actions-nvm.git"
+  },
+  "keywords": [
+    "github",
+    "re-usable",
+    "actions",
+    "workflows",
+    "nvm"
+  ],
+  "author": "JCystems",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/percebus/github-actions-nvm/issues"
+  },
+  "homepage": "https://github.com/percebus/github-actions-nvm#readme"
+}

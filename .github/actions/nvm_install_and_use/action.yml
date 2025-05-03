@@ -1,0 +1,17 @@
+name: nvm_install_and_use
+description: nvm install & use
+
+runs:
+  using: composite
+  steps:
+    - name: nvm install
+      shell: bash
+      run: nvm install --no-progress
+
+    - name: nvm use
+      shell: bash
+      run: nvm use
+
+    - name: node --version
+      shell: bash
+      run: node --version
