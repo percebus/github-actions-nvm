@@ -9,9 +9,11 @@ runs:
       run: node --version
       continue-on-error: true
 
-    - name: brew uninstall node
-      shell: bash
-      run: brew uninstall node
+    # "unset" node version (to uninstall)
+    - name: Uninstall node
+      uses: actions/setup-node@v3
+      with:
+        node-version: null # Or a non-existent version
 
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
