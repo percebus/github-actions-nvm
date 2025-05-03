@@ -4,14 +4,18 @@ description: nvm install & use
 runs:
   using: composite
   steps:
-    - name: nvm install
+    - name: node --version (before)
       shell: bash
+      run: node --version
+
+    - name: nvm install
+      shell: bash -l {0}
       run: nvm install --no-progress
 
     - name: nvm use
       shell: bash
       run: nvm use
 
-    - name: node --version
+    - name: node --version (after)
       shell: bash
       run: node --version
