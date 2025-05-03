@@ -7,14 +7,11 @@ runs:
     - name: node --version (before)
       shell: bash
       run: node --version
+      continue-on-error: true
 
     - name: nvm install
       shell: bash -l {0}
       run: nvm install --no-progress
-
-    - name: nvm use
-      shell: bash
-      run: nvm use
 
     - name: node --version (after)
       shell: bash
