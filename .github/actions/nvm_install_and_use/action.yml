@@ -1,0 +1,29 @@
+name: nvm_install_and_use
+description: nvm install & use
+
+runs:
+  using: composite
+  steps:
+    - name: node --version (before)
+      shell: bash
+      run: node --version
+      continue-on-error: true
+
+    - name: nvm install
+      # WARNING: nvm is "not found" w/o this
+      shell: bash -l {0}
+      run: nvm install --no-progress
+
+    # nvm install seems to also activate it
+    # - name: nvm use
+    #   shell: bash -l {0}
+    #   run: nvm use --no-progress
+
+    # FIXME still using the old version
+    - name: node --version (after)
+      shell: bash -l {0}
+      run: node --version
+
+    - name: npm --version
+      shell: bash -l {0}
+      run: npm --version
