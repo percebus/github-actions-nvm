@@ -10,10 +10,11 @@ runs:
       continue-on-error: true
 
     - name: uninstall node
-      shell: bash
+      shell: bash -l {0}
       run: |
         sudo apt-get purge npm
         sudo apt-get purge nodejs
+        sudo apt-get autoremove
 
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
