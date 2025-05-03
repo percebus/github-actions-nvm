@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/percebus/github-actions-nvm/issues"
   },
-  "homepage": "https://github.com/percebus/github-actions-nvm#readme"
+  "homepage": "https://github.com/percebus/github-actions-nvm#readme",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
 }
