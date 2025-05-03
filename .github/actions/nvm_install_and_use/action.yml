@@ -9,12 +9,6 @@ runs:
       run: node --version
       continue-on-error: true
 
-    # "unset" node version (to uninstall)
-    - name: Uninstall node
-      uses: actions/setup-node@v3
-      with:
-        node-version: -1
-
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
