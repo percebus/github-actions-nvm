@@ -22,9 +22,13 @@ runs:
       run: nvm install --no-progress
 
     # nvm install seems to also activate it
-    - name: nvm use
+    # - name: nvm use
+    #   shell: bash -l {0}
+    #   run: nvm use --no-progress
+
+    - name: nvm which current
       shell: bash -l {0}
-      run: nvm use --no-progress
+      run: nvm which current
 
     # FIXME still using the old version
     - name: node --version (after)
