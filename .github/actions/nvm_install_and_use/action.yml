@@ -14,15 +14,16 @@ runs:
       shell: bash -l {0}
       run: nvm install --no-progress
 
-    - name: nvm use
-      # WARNING: nvm is "not found" w/o this
-      shell: bash -l {0}
-      run: nvm use --no-progress
+    # nvm install seems to also activate it
+    # - name: nvm use
+    #   # WARNING: nvm is "not found" w/o this
+    #   shell: bash -l {0}
+    #   run: nvm use --no-progress
 
     - name: node --version (after)
-      shell: bash
+      shell: bash -l {0}
       run: node --version
 
     - name: npm --version
-      shell: bash
+      shell: bash -l {0}
       run: npm --version
