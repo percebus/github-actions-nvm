@@ -4,6 +4,7 @@ description: nvm install & use
 runs:
   using: composite
   steps:
+    # TODO? move these 2 steps to github-actions-node?
     - name: node --version (before)
       shell: bash
       run: |
@@ -33,6 +34,7 @@ runs:
       shell: bash -l {0}
       run: nvm which node
 
+    # TODO: Is there a way to prefix the path, instead of appending it?
     - name: Update PATH
       shell: bash -l {0}
       run: |
