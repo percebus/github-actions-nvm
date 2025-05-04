@@ -32,7 +32,9 @@ jobs:
 
     name: node @ ${{ matrix.node-version }}
     steps:
-      - uses: ./.github/actions/install_and_use
+      # Is it because the matrix needs to be pre-rendered?
+      # - uses: ./.github/actions/install_and_use # FIXME: why doesn't this work?
+      - uses: percebus/github-actions-node/.github/actions/install_and_use@main # XXX
         with:
           working-directory: assets/node/${{ matrix.node-version }}
 
