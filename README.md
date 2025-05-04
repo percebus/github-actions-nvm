@@ -10,6 +10,6 @@ GitHub re-usable actions and workflows for nvm to install node
 
 ### Actions
 
-| action                                     | tests                                                                                                                                                                                                                                               |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [setup](./.github/actions/install_and_use) | [![Test actions/install_and_use](https://github.com/percebus/github-actions-nvm/actions/workflows/test_actions__install_and_use.yml/badge.svg)](https://github.com/percebus/github-actions-nvm/actions/workflows/test_actions__install_and_use.yml) |
+| action                                               | tests                                                                                                                                                                                                                                               |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [install_and_use](./.github/actions/install_and_use) | [![Test actions/install_and_use](https://github.com/percebus/github-actions-nvm/actions/workflows/test_actions__install_and_use.yml/badge.svg)](https://github.com/percebus/github-actions-nvm/actions/workflows/test_actions__install_and_use.yml) |
