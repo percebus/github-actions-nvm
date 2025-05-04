@@ -1,6 +1,21 @@
 name: nvm_install_and_use
 description: nvm install & use
 
+inputs:
+  working-directory:
+    description: working directory
+    required: false
+    default: "."
+
+outputs:
+  node-version:
+    description: "node --version"
+    value: ${{ steps.node-version.outputs.version }}
+
+  npm-version:
+    description: "npm --version"
+    value: ${{ steps.npm-version.outputs.version }}
+
 runs:
   using: composite
   steps:
@@ -23,30 +38,42 @@ runs:
     - name: nvm install
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
+      working-directory: ${{ inputs.working-directory }}
       run: nvm install --no-progress
 
     # nvm install seems to also activate it
     # - name: nvm use
     #   shell: bash -l {0}
+    #   working-directory: ${{ inputs.working-directory }}
     #   run: nvm use --no-progress
 
     - name: nvm which node
       shell: bash -l {0}
+      working-directory: ${{ inputs.working-directory }}
       run: nvm which node
 
     # TODO: Is there a way to prefix the path, instead of appending it?
     - name: Update PATH
       shell: bash -l {0}
+      working-directory: ${{ inputs.working-directory }}
       run: |
         echo "$(nvm which node | sed 's/\/bin\/node//')/bin" >> $GITHUB_PATH
 
     # FIXME still using the old version
     - name: node --version (after)
+      id: node-version
       shell: bash -l {0}
+      working-directory: ${{ inputs.working-directory }}
       run: |
         which node
         node --version
+        echo "node-version=$(echo node --version)" >> $GITHUB_OUTPUT
 
     - name: npm --version
+      id: npm-version
       shell: bash -l {0}
-      run: npm --version
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        which npm
+        npm --version
+        echo "npm-version=$(echo npm --version)" >> $GITHUB_OUTPUT
