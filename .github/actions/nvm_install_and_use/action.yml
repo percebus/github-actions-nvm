@@ -11,6 +11,9 @@ runs:
         node --version
       continue-on-error: true
 
+    # Let's make sure it.-
+    # - doesn't try to use node "default" (20)
+    # - instead of LTS (22)
     - name: rm node
       shell: bash
       run: |
@@ -33,9 +36,7 @@ runs:
     - name: Update PATH
       shell: bash -l {0}
       run: |
-        echo ${GITHUB_PATH}
         echo "$(nvm which node | sed 's/\/bin\/node//')/bin" >> $GITHUB_PATH
-        echo ${GITHUB_PATH}
 
     # FIXME still using the old version
     - name: node --version (after)
