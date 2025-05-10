@@ -7,6 +7,16 @@ inputs:
     required: false
     default: "."
 
+  uninstall-node:
+    description: Uninstall node
+    required: false
+    default: "true"
+
+  nvm_install_cli_options:
+    description: nvm install CLI options
+    required: false
+    default: "--no-progress --latest-npm"
+
 outputs:
   node-version:
     description: "node --version"
@@ -19,27 +29,14 @@ outputs:
 runs:
   using: composite
   steps:
-    # TODO? move these 2 steps to github-actions-node?
-    - name: node --version (before)
-      shell: bash
-      run: |
-        which node
-        node --version
-      continue-on-error: true
+    - uses: percebus/github-actions-node/.github/actions/uninstall@main
+      if: ${{ inputs.uninstall-node == 'true' }}
 
-    # Let's make sure it.-
-    # - doesn't try to use node "default" (20)
-    # - instead of LTS (22)
-    - name: rm node
-      shell: bash
-      run: |
-        rm -rf /usr/local/bin/node
-
-    - name: nvm install
+    - name: nvm install ${{ inputs.nvm_install_cli_options }}
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
       working-directory: ${{ inputs.working-directory }}
-      run: nvm install --no-progress
+      run: nvm install ${{ inputs.nvm_install_cli_options }}
 
     # nvm install seems to also activate it
     # - name: nvm use
