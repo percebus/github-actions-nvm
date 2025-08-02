@@ -1,7 +1,9 @@
 name: "[C]ontinuous [I]ntegration"
+
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -13,14 +15,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: ./.github/actions/install_and_use
-
-      - name: npm run setup:ci
-        run: npm run setup:ci --if-present
-
-      - name: npm install
-        run: npm ci
-      - name: ls node_modules
-        run: ls -la ./node_modules
+      - uses: percebus/github-actions-npm/.github/actions/install@main
 
       - name: npm run lint
         run: npm run lint
