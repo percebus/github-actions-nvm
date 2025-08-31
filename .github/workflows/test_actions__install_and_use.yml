@@ -8,6 +8,9 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   default:
     runs-on: ubuntu-latest
@@ -19,29 +22,29 @@ jobs:
         run: node --version
 
   # FIXME
-  # npmrc__matrix:
-  #   needs: default
-  #   runs-on: ubuntu-latest
+  npmrc__matrix:
+    needs: default
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     fail-fast: false
-  #     max-parallel: 6
-  #     matrix:
-  #       node-version:
-  #         # As of 2025-05-04
-  #         - default # 20?
-  #         - lts # 22
-  #         - stable # 23
-  #         - latest # 24
-  #         - root
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        node-version:
+          # As of 2025-05-04
+          - default # 20?
+          - lts # 22
+          - stable # 23
+          - latest # 24
+          - root
 
-  #   name: node @ ${{ matrix.node-version }}
-  #   steps:
-  #     # Is it because the matrix needs to be pre-rendered?
-  #     # - uses: ./.github/actions/install_and_use # FIXME: why doesn't this work?
-  #     - uses: percebus/github-actions-nvm/.github/actions/install_and_use@main # XXX
-  #       with:
-  #         working-directory: ./assets/node/${{ matrix.node-version }}
+    name: node @ ${{ matrix.node-version }}
+    steps:
+      # Is it because the matrix needs to be pre-rendered?
+      # - uses: ./.github/actions/install_and_use # FIXME: why doesn't this work?
+      - uses: percebus/github-actions-nvm/.github/actions/install_and_use@main # XXX
+        with:
+          working-directory: ./assets/node/${{ matrix.node-version }}
 
-  #     - name: node --version
-  #       run: node --version
+      - name: node --version
+        run: node --version
