@@ -8,6 +8,9 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   default:
     runs-on: ubuntu-latest
@@ -37,7 +40,7 @@ jobs:
 
   #   name: node @ ${{ matrix.node-version }}
   #   steps:
-  #     # Is it because the matrix needs to be pre-rendered?
+  #     # NOTE: Is it because the matrix needs to be pre-rendered?
   #     # - uses: ./.github/actions/install_and_use # FIXME: why doesn't this work?
   #     - uses: percebus/github-actions-nvm/.github/actions/install_and_use@main # XXX
   #       with:

@@ -32,6 +32,11 @@ runs:
     - uses: percebus/github-actions-node/.github/actions/uninstall@main
       if: ${{ inputs.uninstall-node == 'true' }}
 
+    - name: cat .nvmrc
+      shell: bash -l {0}
+      # working-directory: ${{ inputs.working-directory }}  # TODO? or XXX?
+      run: cat ${{ inputs.working-directory }}/.nvmrc
+
     - name: nvm install ${{ inputs.nvm_install_cli_options }}
       # WARNING: nvm is "not found" w/o this
       shell: bash -l {0}
