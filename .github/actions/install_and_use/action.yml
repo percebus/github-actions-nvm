@@ -17,6 +17,11 @@ inputs:
     required: false
     default: "--no-progress --latest-npm"
 
+  ls_cli_options:
+    description: ls CLI options
+    required: false
+    default: "-la"
+
 outputs:
   node-version:
     description: "node --version"
@@ -31,6 +36,11 @@ runs:
   steps:
     - uses: percebus/github-actions-node/.github/actions/uninstall@main
       if: ${{ inputs.uninstall-node == 'true' }}
+
+    - name: ls
+      shell: bash -l {0}
+      working-directory: ${{ inputs.working-directory }}
+      run: ls ${{ inputs.ls_cli_options }}
 
     - name: nvm install ${{ inputs.nvm_install_cli_options }}
       # WARNING: nvm is "not found" w/o this
